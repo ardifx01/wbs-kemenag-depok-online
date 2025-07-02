@@ -1,0 +1,67 @@
+/* --- Style Khusus Halaman Admin --- */
+body.admin-body {
+    background-color: #f0f2f5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #333;
+}
+.container-admin {
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 20px;
+}
+.header-admin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+.header-admin h1 { margin: 0; font-size: 1.8em; }
+hr { border: 0; height: 1px; background-color: #e9ecef; margin: 20px 0; }
+
+.stats-grid, .filter-controls, table, .table-controls {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+.chart-container-admin {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin: 20px 0;
+    height: 400px;
+}
+
+/* Kartu Statistik */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+.stat-card { text-align: left; padding: 20px; border: 1px solid #e9ecef; border-radius: 8px; }
+.stat-card h3 { font-size: 2.2em; }
+.stat-card p { font-size: 1em; color: #666; }
+.stat-card.status-diterima { border-top: 4px solid #ffc107; }
+/* ... (tambahkan warna lain jika perlu) ... */
+
+/* Filter */
+.filter-controls form { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+.button-filter { background-color: #005662; color: #fff; border:0; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
+.button-reset { background-color: #6c757d; color: #fff; text-decoration: none; padding: 8px 15px; border-radius: 5px; }
+
+/* Tabel */
+.table-actions { margin-bottom: 20px; }
+.button-export { background-color: #1D6F42; color: #fff; text-decoration: none; padding: 10px 15px; border-radius: 5px; }
+table { width: 100%; border-collapse: collapse; margin-top: 0; padding: 0; box-shadow: none; }
+th, td { padding: 12px; border-bottom: 1px solid #e9ecef; text-align: left; }
+th { background-color: #f8f9fa; }
+tbody tr:hover { background-color: #f8f9fa; }
+
+/* Paginasi */
+.table-controls { display: flex; justify-content: space-between; align-items: center; }
+.pagination { display: flex; list-style: none; padding: 0; margin: 0; }
+.pagination li a { color: #005662; padding: 8px 12px; text-decoration: none; border: 1px solid #ddd; margin: 0 2px; border-radius: 4px; }
+.pagination li.active a { background-color: #005662; color: white; border-color: #005662; }
+.pagination li.disabled a { color: #ccc; pointer-events: none; }

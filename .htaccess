@@ -1,0 +1,19 @@
+Options -MultiViews
+RewriteEngine On
+
+RewriteRule ^$ index.php [L]
+
+# Aturan Eksplisit
+RewriteRule ^lacak$ lacak.php [L]
+RewriteRule ^statistik$ statistik.php [L]
+RewriteRule ^index$ index.php [L]
+
+# Aturan untuk Admin
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^admin/([^/]+)$ admin/$1.php [L]
+
+# --- Aturan Eksplisit untuk Setiap Halaman Publik ---
+RewriteRule ^lacak$ lacak.php [L]
+RewriteRule ^statistik$ statistik.php [L]
+RewriteRule ^buat-laporan$ buat-laporan.php [L] RewriteRule ^index$ index.php [L]

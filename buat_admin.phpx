@@ -1,0 +1,40 @@
+<?php
+require_once 'config.php';
+
+echo "<h1>Membuat Admin Baru</h1>";
+
+// --- Detail Admin Baru ---
+$username_baru = 'umum';
+$password_polos = 'depok*25';
+$nama_lengkap = 'Bagian Umum';
+// -------------------------
+
+// Buat hash dari password
+$password_hash = password_hash($password_polos, PASSWORD_DEFAULT);
+
+// Coba masukkan ke database
+try {
+    // Periksa dulu apakah ada kolom 'nama_lengkap' atau 'nama'
+    // Berdasarkan kode sebelumnya, nama kolomnya adalah 'nama'
+    $stmt = $pdo->prepare("INSERT INTO admin (username, password, nama) VALUES (?, ?, ?)");
+    $stmt->execute([$username_baru, $password_hash, $nama_lengkap]);
+
+    echo "<p style='color:green; font-family: sans-serif; font-size: 16px;'>SUKSES! Admin baru berhasil dibuat.</p>";
+    echo "<p style='font-family: sans-serif;'>Silakan login ke panel admin melalui halaman <a href='admin/login'>login</a> dengan:</p>";
+    echo "<ul style='font-family: sans-serif;'>";
+    echo "<li>Username: <strong>" . htmlspecialchars($username_baru) . "</strong></li>";
+    echo "<li>Password: <strong>" . htmlspecialchars($password_polos) . "</strong></li>";
+    echo "</ul>";
+    echo "<p style='font-family: sans-serif; color:red; font-weight:bold;'>JANGAN LUPA HAPUS FILE INI SETELAH SELESAI!</p>";
+
+
+} catch (PDOException $e) {
+    echo "<p style='color:red; font-family: sans-serif; font-size: 16px;'>GAGAL! Terjadi error saat menyimpan ke database.</p>";
+    echo "<p style='font-family: sans-serif;'>Pesan Error: " . $e->getMessage() . "</p>";
+    
+    // Memberikan petunjuk yang lebih spesifik jika errornya adalah duplicate entry
+    if ($e->errorInfo[1] == 1062) {
+         echo "<p style='font-family: sans-serif;'><strong>Kemungkinan besar username '".htmlspecialchars($username_baru)."' sudah ada. Coba gunakan username lain atau hapus dulu dari database jika ada.</strong></p>";
+    }
+}
+?>
