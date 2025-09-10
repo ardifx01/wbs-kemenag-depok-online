@@ -44,7 +44,7 @@ USE wbs;
 3. **Konfigurasi**
    Edit config.php sesuai server:
  ```
-   $host = 'localhost';
+$host = 'localhost';
 $user = 'dbuser';
 $pass = 'dbpass';
 $db = 'wbs';
